@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down",
+    "prisma:generate": "dotenv -c development -- prisma generate",
+    "prisma:validate": "dotenv -c development -- prisma validate",
+    "prisma:migrate:dev": "dotenv -c development -- prisma migrate dev",
+    "prisma:studio": "dotenv -c development -- prisma studio",
+    "dev": "pnpm db:up && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,5 +25,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "prisma": "^4.8.0"
   }
 }
